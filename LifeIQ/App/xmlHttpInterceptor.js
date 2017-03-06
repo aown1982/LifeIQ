@@ -5,17 +5,14 @@
         .module('iqApp')
         .factory('xmlHttpInteceptor', xmlHttpInteceptor);
 
-    xmlHttpInteceptor.$inject = ['$q', '$window', 'errorHandler'];
+    xmlHttpInteceptor.$inject = ['$q', '$window', 'errorHandler', 'constants'];
 
-    function xmlHttpInteceptor($q, $window, errorHandler) {
+    function xmlHttpInteceptor($q, $window, errorHandler, constants) {
 
         var _request = function (config) {
             config.headers = config.headers || {};
             // if we have a token stored, append it to the headers as an Authorization bearer header
-            var localToken = $window.localStorage.token;
-            if (localToken) {
-                config.headers.Authorization = 'Bearer ' + localToken;
-            }
+                config.headers.Authorization = 'Bearer ' + constants.TOKEN;
             return config;
         };
 

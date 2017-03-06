@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app=  angular.module('iqApp', ['ngRoute']).config(['$httpProvider', function ($httpProvider) {
+    var app = angular.module('iqApp', ['ngRoute']).config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('xmlHttpInteceptor');
         if (!$httpProvider.defaults.headers.get) {
             $httpProvider.defaults.headers.get = {};
